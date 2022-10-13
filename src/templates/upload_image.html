@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h1>Cargar una Imagen</h1>
+      <hr>
+
+      <form action="/upload-image" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <p>Seleccionar imagen</lp>
+          <div class="custom-file">
+            <input type="file" class="barra" name="image" id="image">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary button-barra">Upload</button>
+
+      </form>
+      <br/>
+      <br/>
+      <br/>
+      
+      <h1>Resultados</h1>
+      <hr>
+      {% if img %}
+        <h5 class="resHeader">Imagen: </h5>
+        <p class="res"><b>{{ img }}</b><p>
+      {% else %}
+        <h5 class="resHeader">Imagen: </h5>
+      {% endif %}
+      <hr>
+      <div class="results">
+        {% if lines_text %}
+          <h5 class="resHeader">Líneas identificadas: </h5>
+          <p class="res"> <b>{{ lines_text }}</b></p>
+        {% else %}
+          <h5 class="resHeader">Líneas identificadas: </h5>
+        {% endif %}
+      </div>
+      <div class="results">
+        {% if extracted_text %}
+          <h5 class="resHeader">Texto reconocido: </h5>
+          <p class="res"> <b>{{ extracted_text }}</b></p>
+        {% else %}
+          <h5 class="resHeader">Texto reconocido: </h5>
+        {% endif %}
+      </div>
+      <div class="results">
+        {% if words %}
+          <h5 class="resHeader">7 palabras más utilizadas: </h5>
+            {% for w,veces in words.items() %}
+            <p class="res"><b>{{ w }}</b>   -   <b>{{ veces }}</b><p>
+          {% endfor %}
+        {% else %}
+          <h5 class="resHeader">7 palabras más utilizadas: </h5>
+        {% endif %}
+      </div>
+
+      <div class="results">
+        {% if words %}
+          <h5 class="resHeader">Campos Indexacion: </h5>
+            {% for w,veces in words.items() %}
+            <p class="res"><b>{{ w }}</b>   -   <b>{{ veces }}</b><p>
+          {% endfor %}
+        {% else %}
+          <h5 class="resHeader">Campos Indexacion: </h5>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

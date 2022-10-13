@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Flask Web App</title>
+    <!-- BOOTSTRAP 4 CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <style>
+        body {
+            background-color: black;
+            color: white
+        }
+        
+        .barra {
+            width: 90%;
+            padding: 5px 20px;
+            margin: 10px;
+            display: inline-block;
+            border: 3px solid #0275d8;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: white;
+            color: grey;
+        }
+        .button-barra {
+            margin: 5px 10px;
+        }
+
+        .content {
+            width: 85%;
+        }
+
+        .results {
+            background-color: #333333;
+            border-style: solid;
+            border-color: white;
+            margin: 20px;
+            padding: 5px 20px;
+        }
+
+        .resHeader {
+            color: #0275d8;
+        }
+
+        .res {
+            padding: 0px 20px;
+        }
+
+        hr {
+            border-color: white;
+        }
+
+        .descripcion {
+            width: 90%;
+            padding: 20px 10px;
+            border: 2px solid white;
+            color: #ccc;
+            text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">OCR App</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('upload_image') }}">OCR</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  
+
+    <div class="container p-4">
+      {% block content %}
+      {% endblock%}
+    </div>
+
+  </body>
+</html>
